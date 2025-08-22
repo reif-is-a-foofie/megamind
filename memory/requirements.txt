@@ -1,0 +1,18 @@
+# Memory System Dependencies
+# The Ship's Log - Foundation for all other contracts
+
+# Database ORM
+SQLAlchemy>=2.0.0
+
+# SQLite support (included with Python, but listed for clarity)
+# No additional package needed for SQLite
+
+# Optional: For future PostgreSQL support
+# psycopg2-binary>=2.9.0
+
+# Optional: For future Redis caching
+# redis>=4.0.0
+
+# Optional: For advanced analytics
+# pandas>=1.5.0
+# numpy>=1.21.0

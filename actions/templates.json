@@ -1,0 +1,107 @@
+{
+  "templates": [
+    {
+      "name": "quick_acknowledgment",
+      "description": "Quick acknowledgment reply",
+      "template_type": "reply",
+      "content": "Thanks for your message. I'll get back to you soon.",
+      "variables": [],
+      "category": "communication",
+      "created_at": "2025-08-22T08:14:06.127621",
+      "updated_at": "2025-08-22T08:14:06.127629",
+      "usage_count": 0,
+      "metadata": {}
+    },
+    {
+      "name": "detailed_response",
+      "description": "Detailed response template",
+      "template_type": "reply",
+      "content": "Thank you for reaching out about {topic}. Here's what I can tell you:\n\n{response}\n\nLet me know if you need any clarification.",
+      "variables": [
+        "topic",
+        "response"
+      ],
+      "category": "communication",
+      "created_at": "2025-08-22T08:14:06.127637",
+      "updated_at": "2025-08-22T08:14:06.127638",
+      "usage_count": 0,
+      "metadata": {}
+    },
+    {
+      "name": "meeting_confirmation",
+      "description": "Meeting confirmation template",
+      "template_type": "reply",
+      "content": "I confirm our meeting on {date} at {time}. I'll be prepared to discuss {agenda}.",
+      "variables": [
+        "date",
+        "time",
+        "agenda"
+      ],
+      "category": "meetings",
+      "created_at": "2025-08-22T08:14:06.127643",
+      "updated_at": "2025-08-22T08:14:06.127644",
+      "usage_count": 0,
+      "metadata": {}
+    },
+    {
+      "name": "task_delegation",
+      "description": "Task delegation template",
+      "template_type": "forward",
+      "content": "Hi {recipient},\n\nI'm forwarding this task to you as it aligns with your expertise. Please let me know if you need any additional context.\n\n{original_message}",
+      "variables": [
+        "recipient",
+        "original_message"
+      ],
+      "category": "workflow",
+      "created_at": "2025-08-22T08:14:06.127646",
+      "updated_at": "2025-08-22T08:14:06.127647",
+      "usage_count": 0,
+      "metadata": {}
+    },
+    {
+      "name": "follow_up_reminder",
+      "description": "Follow-up reminder template",
+      "template_type": "schedule",
+      "content": "Follow up on {topic} with {contact} regarding {action_item}",
+      "variables": [
+        "topic",
+        "contact",
+        "action_item"
+      ],
+      "category": "reminders",
+      "created_at": "2025-08-22T08:14:06.127650",
+      "updated_at": "2025-08-22T08:14:06.127651",
+      "usage_count": 0,
+      "metadata": {}
+    },
+    {
+      "name": "urgent_response",
+      "description": "Urgent response template",
+      "template_type": "reply",
+      "content": "I understand this is urgent. I'm prioritizing this and will address it immediately. I'll update you within {timeframe}.",
+      "variables": [
+        "timeframe"
+      ],
+      "category": "urgent",
+      "created_at": "2025-08-22T08:14:06.127653",
+      "updated_at": "2025-08-22T08:14:06.127654",
+      "usage_count": 0,
+      "metadata": {}
+    },
+    {
+      "name": "test_template",
+      "description": "Test template for validation",
+      "template_type": "reply",
+      "content": "Thank you for your message about {topic}. I'll respond within {timeframe}.",
+      "variables": [
+        "topic",
+        "timeframe"
+      ],
+      "category": "test",
+      "created_at": "2025-08-22T08:14:06.128204",
+      "updated_at": "2025-08-22T08:14:06.128208",
+      "usage_count": 1,
+      "metadata": {}
+    }
+  ]
+}

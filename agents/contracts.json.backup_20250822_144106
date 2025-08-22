@@ -1,0 +1,738 @@
+[
+  {
+    "id": "ui.01",
+    "title": "Crush-based UI Framework",
+    "description": "Implement a styled terminal interface using Crush (Charmbracelet) that embodies the pirate/butler aesthetic from mission.md.",
+    "allowed_files": [
+      "ui/*.go",
+      "ui/*.py",
+      "ui/styles/*"
+    ],
+    "completion_criteria": [
+      "Interface loads without errors",
+      "Supports arrow key navigation",
+      "Supports Enter key for responding to feed items",
+      "Beautiful default theme matching mission aesthetic (pirate rescue symbolism)",
+      "UI adapts dynamically to new feeds added later",
+      "Integrates with memory system for persistent state",
+      "Ready to receive feed data from feed.01"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Assign UI contract, prioritize theme consistency, integrate into mission aesthetic",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement UI using Crush framework, submit progress to contracts.json",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate UI behavior, check keybindings and aesthetics, mark contract complete if all criteria met",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "completed",
+    "progress_percentage": 100,
+    "dependencies": [
+      "orchestrator.01",
+      "memory.01"
+    ],
+    "coordination_notes": "Coordinate with feed.01 - UI must be ready to receive and display feed data. Mission aesthetic should reflect the 'pirate rescue' symbolism from the hymn.",
+    "assigned_to": "worker_agent",
+    "captain_notes": "UI framework assignment",
+    "worker_notes": "UI framework implementation complete",
+    "tester_notes": "UI framework validated and ready"
+  },
+  {
+    "id": "feed.01",
+    "title": "Unified Feed Aggregator",
+    "description": "Aggregate notifications from multiple sources (email, Telegram, APIs, alerts) into one terminal feed - the 'one feed to rule them all' from plan.md.",
+    "allowed_files": [
+      "feed/*.py",
+      "connectors/*.py"
+    ],
+    "completion_criteria": [
+      "Can subscribe to at least 3 data sources (prioritize: gold price, hurricane alerts, emails)",
+      "New items appear in realtime in the feed",
+      "User can mark items done or delete them with a keystroke",
+      "Feed scrolls smoothly and persists history",
+      "Integrates with memory system for persistence",
+      "Provides clean data interface for ui.01 to consume",
+      "Supports the 'unified command-line dashboard' vision"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Select sources to prioritize (gold, hurricanes, emails), sequence Worker implementation",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement connectors and aggregator logic, set status to in_progress",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate realtime flow, confirm keystroke actions, persistence, and reliability",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "completed",
+    "progress_percentage": 100,
+    "dependencies": [
+      "orchestrator.01",
+      "memory.01"
+    ],
+    "coordination_notes": "Coordinate with ui.01 - feed must provide clean data interface for UI consumption. This is the core 'unified stream' that pulls life into a single flow.",
+    "assigned_to": "worker_agent",
+    "captain_notes": "Feed aggregator assignment",
+    "worker_notes": "Feed aggregator implementation complete",
+    "tester_notes": "Feed aggregator validated and ready"
+  },
+  {
+    "id": "memory.01",
+    "title": "Persistent Memory",
+    "description": "Implement local memory system that stores all feed history and user responses for later querying.",
+    "allowed_files": [
+      "memory/*.py"
+    ],
+    "completion_criteria": [
+      "All feed items are persisted to local DB",
+      "User actions (done, delete, respond) are recorded",
+      "Memory can be queried via commandline prompt",
+      "Memory supports exporting to JSON"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define memory boundaries (how much to persist, privacy considerations), assign to Worker",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement memory persistence and querying logic, submit to contracts.json",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate data persistence, history querying, and JSON export functionality",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "completed",
+    "progress_percentage": 100,
+    "assigned_to": "worker_agent",
+    "captain_notes": "The ship's log - everything else depends on persistent memory. Use SQLite for simplicity, but design for future scaling. Priority: HIGH.",
+    "worker_notes": "Memory system implemented with hybrid SQLite + caching architecture. All contract requirements satisfied: persistent storage, user action recording, CLI querying, and JSON export. System tested and operational.",
+    "tester_notes": "Memory system validation complete - all persistence and querying criteria verified. Ship's log operational."
+  },
+  {
+    "id": "notify.01",
+    "title": "Meeting Alerts & Actions",
+    "description": "Provide real-time notifications for meetings and allow user to join with a single keystroke.",
+    "allowed_files": [
+      "notify/*.py"
+    ],
+    "completion_criteria": [
+      "System pulls upcoming meetings from calendar API",
+      "Notifications appear in feed with clear time-to-start indicators",
+      "User can press Enter to join a meeting directly from feed",
+      "Alerts are logged in memory"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define which calendar sources are integrated (Google, iCloud), sequence Worker implementation",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement notification logic and meeting join triggers",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate meeting alerts and Enter-to-join functionality",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "completed",
+    "progress_percentage": 100,
+    "assigned_to": "worker_agent",
+    "captain_notes": "Notification system assignment",
+    "worker_notes": "Notification system implementation complete",
+    "tester_notes": "Notification system validated and ready"
+  },
+  {
+    "id": "game.01",
+    "title": "Gamified XP & Pirate Aesthetic",
+    "description": "Implement XP system for completing feed items, styled in pirate/butler motif tied to mission.md.",
+    "allowed_files": [
+      "game/*.py",
+      "ui/game_overlay/*"
+    ],
+    "completion_criteria": [
+      "XP awarded when user marks feed items done",
+      "Level progression or titles appear in UI",
+      "Aesthetic ties lightly to mission.md (pirate rescue symbolism)",
+      "Gamified progress visible in real-time"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define gamification philosophy (XP values, ranks, tie to mission), sequence Worker tasks",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement XP system and overlay UI elements",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate XP awarding, rank progression, and aesthetic consistency",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "completed",
+    "progress_percentage": 100,
+    "assigned_to": "worker_agent",
+    "captain_notes": "Gamification assignment",
+    "worker_notes": "Gamification implementation complete",
+    "tester_notes": "Gamification validated and ready"
+  },
+  {
+    "id": "orchestrator.01",
+    "title": "Captain\u2013Worker\u2013Tester Flow Enforcement",
+    "description": "Ensure all contracts flow through Captain assignment, Worker implementation, and Tester validation without spec-gaming.",
+    "allowed_files": [
+      "orchestrator/*.py"
+    ],
+    "completion_criteria": [
+      "Contracts can only move from 'pending' -> 'in_progress' -> 'awaiting_review' -> 'completed'",
+      "Only Captain may assign",
+      "Only Worker may implement",
+      "Only Tester may mark completed"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Assign contracts and sequence work",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Execute work and submit progress to orchestrator",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Mark contracts completed after independent validation",
+        "restrictions": [
+          "MUST NOT implement"
+        ]
+      }
+    },
+    "status": "completed",
+    "progress_percentage": 100,
+    "assigned_to": "worker_agent",
+    "captain_notes": "Critical foundation contract. This orchestrator is the keel of our galleon - without it, all other contracts risk building on unstable ground. Priority: IMMEDIATE.",
+    "worker_notes": "Orchestrator implementation complete: State machine, role enforcer, and contract manager with full audit trail and CLI interface. All contract flow enforcement criteria met.",
+    "tester_notes": "Orchestrator validation complete - all contract flow enforcement criteria verified. Foundation solid."
+  },
+  {
+    "id": "finance.01",
+    "title": "Bank Account Integration",
+    "description": "Integrate bank account feeds to display balances and transactions in the unified feed system.",
+    "allowed_files": [
+      "finance/*.py",
+      "connectors/bank/*.py"
+    ],
+    "completion_criteria": [
+      "Connects to at least 2 major bank APIs",
+      "Displays account balances in real-time feed",
+      "Shows recent transactions with categorization",
+      "Integrates with memory system for transaction history",
+      "Supports secure credential management",
+      "Provides balance alerts and spending insights"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define which banks to prioritize, security requirements, assign to Worker",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement bank connectors and balance display logic",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate bank integration, security, and feed display functionality",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "awaiting_review",
+    "progress_percentage": 100,
+    "assigned_to": "worker_agent",
+    "captain_notes": "Phase 3 financial integration - focus on security and real-time updates. Priority: HIGH.",
+    "dependencies": [
+      "orchestrator.01",
+      "memory.01",
+      "feed.01"
+    ],
+    "coordination_notes": "Builds on existing feed system. Focus on security and real-time balance updates. Integrate with memory for transaction history.",
+    "worker_notes": "Unified finance system implemented with secure credential management, real-time balance tracking, transaction categorization, and comprehensive analytics. Both banking and crypto integration complete."
+  },
+  {
+    "id": "crypto.01",
+    "title": "Crypto Balance Tracking",
+    "description": "Track cryptocurrency balances and portfolio performance in the unified feed system.",
+    "allowed_files": [
+      "crypto/*.py",
+      "connectors/crypto/*.py"
+    ],
+    "completion_criteria": [
+      "Connects to major crypto exchanges (Coinbase, Binance, etc.)",
+      "Displays portfolio balance and 24h change",
+      "Shows individual coin balances and performance",
+      "Integrates with memory system for portfolio history",
+      "Provides price alerts and portfolio insights",
+      "Supports multiple exchange APIs"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define which exchanges to prioritize, assign to Worker",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement crypto connectors and portfolio display logic",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate crypto integration and portfolio display functionality",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "awaiting_review",
+    "progress_percentage": 100,
+    "assigned_to": "worker_agent",
+    "captain_notes": "Phase 3 crypto integration - extends gold price alerts to full portfolio tracking. Priority: HIGH.",
+    "dependencies": [
+      "orchestrator.01",
+      "memory.01",
+      "feed.01"
+    ],
+    "coordination_notes": "Builds on existing feed system and gold price alerts. Focus on real-time portfolio tracking and performance insights.",
+    "worker_notes": "Crypto integration implemented as part of unified finance system. Portfolio tracking, performance metrics, and real-time balance updates complete."
+  },
+  {
+    "id": "knowledge.01",
+    "title": "Advanced Knowledge Graph",
+    "description": "Implement advanced querying and relationship mapping for the persistent memory system.",
+    "allowed_files": [
+      "knowledge/*.py",
+      "memory/graph/*.py"
+    ],
+    "completion_criteria": [
+      "Builds relationship graph from memory data",
+      "Supports complex queries across time, type, and relationships",
+      "Provides insights and patterns from historical data",
+      "Integrates with existing memory system",
+      "Supports graph visualization in UI",
+      "Enables predictive insights based on patterns"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define knowledge graph scope and query capabilities, assign to Worker",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement knowledge graph and advanced querying logic",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate knowledge graph functionality and query performance",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "awaiting_review",
+    "progress_percentage": 100,
+    "assigned_to": "worker_agent",
+    "captain_notes": "Advanced knowledge graph assignment - build intelligent relationship mapping and pattern recognition",
+    "worker_notes": "Advanced Knowledge Graph System complete: KnowledgeGraphBuilder with entity extraction and relationship mapping, QueryEngine with complex filtering and network traversal, PatternAnalyzer with temporal patterns and anomaly detection, InsightGenerator with actionable recommendations. All criteria met with comprehensive testing and memory integration.",
+    "dependencies": [
+      "orchestrator.01",
+      "memory.01"
+    ],
+    "coordination_notes": "Extends the memory system with advanced relationship mapping and pattern recognition. Foundation for semantic search."
+  },
+  {
+    "id": "actions.01",
+    "title": "Advanced Action System",
+    "description": "Implement advanced actions (reply, archive, schedule, forward) for feed items.",
+    "allowed_files": [
+      "actions/*.py",
+      "ui/actions/*.py"
+    ],
+    "completion_criteria": [
+      "Reply to emails directly from feed",
+      "Archive items with smart categorization",
+      "Schedule follow-ups and reminders",
+      "Forward items to other systems/people",
+      "Integrates with memory system for action history",
+      "Provides action templates and shortcuts"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define action types and integration requirements, assign to Worker",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement advanced action system and UI integration",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate action functionality and UI integration",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "awaiting_review",
+    "progress_percentage": 100,
+    "assigned_to": "worker_agent",
+    "captain_notes": "Advanced action system assignment - build sophisticated action handling with templates and workflow automation",
+    "worker_notes": "Advanced Action System complete: ActionManager with intelligent routing and validation, ActionTemplates with variable substitution and customization, ActionExecutor with external system integration, ActionHistory with comprehensive tracking and analytics. All criteria met with seamless UI integration and memory persistence.",
+    "dependencies": [
+      "orchestrator.01",
+      "memory.01",
+      "ui.01",
+      "feed.01"
+    ],
+    "coordination_notes": "Extends basic action handling with advanced capabilities. Integrates with UI and memory systems for seamless workflow."
+  },
+  {
+    "id": "raids.01",
+    "title": "Symbolic Raids & Quests",
+    "description": "Implement symbolic raids and quests tied to real actions (rescue, reclaim, protect) that embody the mission's pirate rescue symbolism.",
+    "allowed_files": [
+      "raids/*.py",
+      "game/raids/*.py"
+    ],
+    "completion_criteria": [
+      "Defines raid types: rescue (help others), reclaim (recover lost items), protect (defend against threats)",
+      "Tracks raid progress and completion in gamified UI",
+      "Integrates with feed items to trigger raid opportunities",
+      "Provides raid rewards and XP bonuses",
+      "Maintains raid history in memory system",
+      "Embodies mission.md pirate rescue symbolism"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define raid philosophy and symbolic meaning, assign to Worker",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement raid system and symbolic quest logic",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate raid functionality and symbolic integration",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "in_progress",
+    "progress_percentage": 0,
+    "assigned_to": "worker_agent_2",
+    "captain_notes": "Phase 4 gamification expansion - symbolic quests embodying mission's pirate rescue symbolism. Priority: MEDIUM.",
+    "dependencies": [
+      "orchestrator.01",
+      "memory.01",
+      "game.01",
+      "feed.01"
+    ],
+    "coordination_notes": "Extends basic gamification with symbolic quests that embody the mission's deeper meaning. Integrates with feed and memory systems."
+  },
+  {
+    "id": "journal.01",
+    "title": "Captain's Log & Reflections",
+    "description": "Implement advanced journaling and reflection features that build on the persistent memory system.",
+    "allowed_files": [
+      "journal/*.py",
+      "memory/journal/*.py"
+    ],
+    "completion_criteria": [
+      "Provides structured journaling interface in UI",
+      "Supports reflection prompts and guided writing",
+      "Integrates with memory system for context-aware entries",
+      "Enables search and analysis of journal entries",
+      "Provides insights and patterns from journaling history",
+      "Supports export and backup of journal data"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define journaling philosophy and reflection structure, assign to Worker",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement journaling system and reflection features",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate journaling functionality and reflection features",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "in_progress",
+    "progress_percentage": 0,
+    "assigned_to": "worker_agent_2",
+    "captain_notes": "Phase 4 reflection system - advanced journaling and insight capabilities. Priority: MEDIUM.",
+    "dependencies": [
+      "orchestrator.01",
+      "memory.01",
+      "knowledge.01"
+    ],
+    "coordination_notes": "Builds on memory and knowledge systems to provide structured reflection and insight capabilities."
+  },
+  {
+    "id": "autonomy.01",
+    "title": "Self-Learning System",
+    "description": "Implement self-learning capabilities that improve system performance from historical data and user interactions.",
+    "allowed_files": [
+      "autonomy/*.py",
+      "memory/learning/*.py"
+    ],
+    "completion_criteria": [
+      "Analyzes user interaction patterns and preferences",
+      "Learns from successful actions and workflows",
+      "Provides personalized recommendations and shortcuts",
+      "Improves system efficiency based on usage patterns",
+      "Maintains learning history in memory system",
+      "Respects privacy and user control over learning"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define learning boundaries and privacy requirements, assign to Worker",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement self-learning algorithms and recommendation system",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate learning functionality and privacy compliance",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "in_progress",
+    "progress_percentage": 0,
+    "assigned_to": "worker_agent",
+    "captain_notes": "Phase 5 autonomy foundation - self-learning and adaptation capabilities. Priority: LOW (depends on Phase 3 completion).",
+    "dependencies": [
+      "orchestrator.01",
+      "memory.01",
+      "knowledge.01",
+      "actions.01"
+    ],
+    "coordination_notes": "Builds on knowledge and action systems to provide intelligent learning and adaptation capabilities."
+  },
+  {
+    "id": "api.01",
+    "title": "Contracts API Implementation",
+    "description": "Implement FastAPI service with Postgres backend for contract management, enabling agents to interact with contracts via API instead of static JSON files.",
+    "allowed_files": [
+      "api/*.py",
+      "database/*.py",
+      "migrations/*.sql"
+    ],
+    "completion_criteria": [
+      "FastAPI service with all required endpoints implemented",
+      "Postgres database with contracts and contract_logs tables",
+      "API authentication and rate limiting",
+      "Database migration from existing contracts.json",
+      "All agents can successfully use API instead of JSON files",
+      "Proper error handling and logging",
+      "API documentation and testing"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define API requirements and assign to Worker",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement FastAPI service and database schema",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate API functionality and database operations",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "awaiting_review",
+    "progress_percentage": 100,
+    "assigned_to": "worker_agent",
+    "captain_notes": "CRITICAL FOUNDATION CONTRACT - This is the keel of our galleon. All other agents depend on this API. Priority: IMMEDIATE.",
+    "worker_notes": "Contracts API complete: FastAPI service with Postgres/SQLite backend, comprehensive CRUD operations, authentication, rate limiting, audit logging, statistics endpoints, migration script, and full test suite. All criteria met with surgical precision and production-ready architecture.",
+    "dependencies": [
+      "orchestrator.01",
+      "memory.01"
+    ],
+    "coordination_notes": "Critical foundation contract - all other agents depend on this API. Must be implemented before agents can function properly."
+  },
+  {
+    "id": "api.02",
+    "title": "Database Migration & Setup",
+    "description": "Set up Postgres database schema and migrate existing contracts from JSON to database, ensuring data integrity and proper indexing.",
+    "allowed_files": [
+      "database/*.py",
+      "migrations/*.sql",
+      "scripts/*.py"
+    ],
+    "completion_criteria": [
+      "Postgres database with contracts and contract_logs tables created",
+      "Database schema matches API specification",
+      "Migration script successfully imports existing contracts.json",
+      "Proper indexing and constraints implemented",
+      "Data integrity verified after migration",
+      "Database connection and authentication configured",
+      "Backup and recovery procedures established"
+    ],
+    "roles": {
+      "captain": {
+        "responsibility": "Define migration requirements and assign to Worker",
+        "restrictions": [
+          "MUST NOT implement",
+          "MUST NOT test"
+        ]
+      },
+      "worker": {
+        "responsibility": "Implement database schema and migration scripts",
+        "restrictions": [
+          "MUST NOT self-test",
+          "MUST NOT mark completed"
+        ]
+      },
+      "tester": {
+        "responsibility": "Validate database setup and migration integrity",
+        "restrictions": [
+          "MUST NOT implement",
+          "ONLY Tester may mark completed"
+        ]
+      }
+    },
+    "status": "in_progress",
+    "progress_percentage": 0,
+    "assigned_to": "worker_agent_2",
+    "captain_notes": "CRITICAL FOUNDATION CONTRACT - Database setup for API layer. Coordinate with api.01 implementation. Priority: HIGH.",
+    "dependencies": [
+      "orchestrator.01",
+      "memory.01"
+    ],
+    "coordination_notes": "Must coordinate with api.01 implementation. Database must be ready before API can function properly."
+  }
+]

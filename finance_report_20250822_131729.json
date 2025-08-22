@@ -1,0 +1,52 @@
+{
+  "report_date": "2025-08-22T13:17:29.105117",
+  "portfolio_performance": {
+    "period_days": 30,
+    "total_accounts": 5,
+    "account_performance": [],
+    "total_value": "0",
+    "total_change": "0",
+    "best_performer": null,
+    "worst_performer": null,
+    "overall_change_percent": 0,
+    "timestamp": "2025-08-22 13:17:29.128438"
+  },
+  "spending_analysis": {
+    "period_days": 30,
+    "total_spending": "0",
+    "num_transactions": 0,
+    "average_transaction": "0",
+    "category_breakdown": {},
+    "daily_spending": {},
+    "account_breakdown": {},
+    "trends": {},
+    "timestamp": "2025-08-22 13:17:29.131983"
+  },
+  "investment_metrics": {
+    "total_investments": 3,
+    "accounts": [],
+    "total_value": "0",
+    "total_return": "0",
+    "best_investment": null,
+    "worst_investment": null,
+    "overall_return_percent": 0,
+    "timestamp": "2025-08-22 13:17:29.140395"
+  },
+  "predictive_insights": {
+    "predicted_monthly_spending": "0",
+    "spending_forecast": {},
+    "budget_recommendations": {},
+    "risk_factors": [],
+    "opportunities": [
+      "Low daily spending - good savings potential"
+    ],
+    "timestamp": "2025-08-22 13:17:29.141757"
+  },
+  "summary": {
+    "total_portfolio_value": "0",
+    "portfolio_change_percent": 0,
+    "total_monthly_spending": "0",
+    "num_transactions": 0,
+    "key_insights": []
+  }
+}

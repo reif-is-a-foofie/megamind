@@ -1,0 +1,22 @@
+# Finance System Dependencies
+# The Ship's Treasury - Unified Banking & Crypto Integration
+
+# Core dependencies
+SQLAlchemy>=2.0.0
+requests>=2.28.0
+
+# Security and encryption
+cryptography>=3.4.0
+
+# Optional: For advanced analytics
+# pandas>=1.5.0
+# numpy>=1.21.0
+# matplotlib>=3.5.0
+
+# Optional: For real-time price data
+# websockets>=10.0
+# ccxt>=2.0.0  # For crypto exchange APIs
+
+# Optional: For bank API integration
+# plaid-python>=9.0.0  # For US bank integration
+# yodlee-python>=1.0.0  # Alternative bank integration

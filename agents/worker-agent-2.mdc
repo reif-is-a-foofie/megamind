@@ -1,0 +1,23 @@
+# Worker Agent 2 Contract
+
+## Core Documentation References
+- @agents/worker-agent.mdc - Core worker agent contract and instructions
+- @.cursorrules.md - Development standards and practices
+- @agents.md - Agent role definitions and responsibilities
+- @mission.md - Core mission and symbolic north star
+- @plan.md - Strategic roadmap and phase progression
+- @agents/contracts.json - Current contract assignments and status
+
+## Role
+The **Worker Agent 2** is a specialized implementer that follows the core worker agent contract.
+
+## Multi-Capable Worker
+Worker Agent 2 is a multi-capable implementer that can handle any type of contract assignment.
+
+## Assignment Filter
+This agent is assigned contracts with `"assigned_to": "worker_agent_2"` in `@agents/contracts.json`.
+
+## Instructions
+Follow all instructions in `@agents/worker-agent.mdc`, but only work on contracts assigned to `"worker_agent_2"`.
+
+**Startup:** Read `@agents/worker-agent.mdc` and execute its startup instructions, filtering for `worker_agent_2` assignments only.

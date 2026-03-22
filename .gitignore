@@ -21,3 +21,4 @@ db/megamind.db
 
 # macOS
 .DS_Store
+config/gmail-oauth.keys.json

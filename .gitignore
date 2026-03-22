@@ -1,0 +1,23 @@
+# Secrets
+.env
+.mcp.json
+
+# Personal state (per-user, not committed)
+context/mcp_data.json
+context/brief.md
+context/checkin_state.json
+context/*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Data
+db/megamind.db
+
+# macOS
+.DS_Store

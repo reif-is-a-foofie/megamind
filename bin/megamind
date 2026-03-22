@@ -1,0 +1,38 @@
+#!/bin/zsh
+# megamind — your desk
+# Install: ln -sf ~/megamind/bin/megamind /usr/local/bin/megamind
+
+MEGAMIND_HOME="${MEGAMIND_HOME:-$HOME/megamind}"
+VENV="$MEGAMIND_HOME/.venv"
+
+[[ -f "$VENV/bin/activate" ]] && source "$VENV/bin/activate"
+
+subcmd="${1:-}"
+
+case "$subcmd" in
+  mcp)
+    # Sync MCPs — check quadrants.yaml, wire any missing servers
+    cd "$MEGAMIND_HOME"
+    exec python3 brain/mcp_sync.py
+    ;;
+  ingest|sync|init|prep)
+    python3 "$MEGAMIND_HOME/main.py" "$@"
+    ;;
+  think)
+    # Open Claude Code session in megamind context (for strategy/chat)
+    python3 "$MEGAMIND_HOME/main.py" prep --quiet 2>/dev/null || true
+    cd "$MEGAMIND_HOME"
+    exec claude "${@:2}"
+    ;;
+  test)
+    # Test harness — bubblegum TUI
+    cd "$MEGAMIND_HOME"
+    exec python3 -m tests.run
+    ;;
+  *)
+    cd "$MEGAMIND_HOME"
+    printf '\033]0;megamind\007'
+    printf '\n\033[1;34m  ✦  megamind\033[0m\n\n'
+    exec claude -c --name megamind
+    ;;
+esac

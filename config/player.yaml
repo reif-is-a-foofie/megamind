@@ -1,0 +1,19 @@
+# WHO IS PLAYING
+# This is the only file that is personal to you.
+# Everything else is derived from this + quadrants.yaml.
+
+name: reify
+class: Sailor
+year: 2026
+
+# Memory mode:
+#   local  → SQLite + sentence-transformers. Zero services, zero API keys.
+#            One-time model download (~100MB). Everything stays on this machine.
+#   cloud  → mem0 cloud API. Requires MEM0_API_KEY in .env.
+memory_mode: local
+
+# Optional: a private context Claude holds but never surfaces
+# Leave blank if not relevant to you
+private_mission: >
+  Build sufficient power, capital, and network to covertly fight human trafficking.
+  The names are Willow, Dawn, Pearl. The mission has faces.

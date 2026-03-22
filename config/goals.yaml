@@ -1,0 +1,66 @@
+# MEGAMIND — SCORING FUNCTION
+# These are the yearly targets. Megamind reasons against these every morning.
+# Update as targets evolve.
+
+year: 2026
+
+quadrants:
+
+  spiritual:
+    description: Daily grounding that sustains a long, costly mission
+    targets:
+      - Daily scripture study
+      - Daily meditation
+    tracking:
+      - source: chat       # Claude conversations that touch scripture/meditation
+      - source: calendar   # blocked time for morning practice
+    notes: The foundation. Everything else runs on this.
+
+  social:
+    description: Relationships are the instrument of the mission
+    targets:
+      - 7 calls per day to old or new friends
+      - Adhna sees all her sisters this year
+    tracking:
+      - source: social     # call logs
+      - source: calendar   # scheduled visits
+      - source: email      # correspondence
+    notes: >
+      Relationships drive deal flow in investment banking.
+      Relationships enable the mission.
+      These are not separate.
+
+  intellectual:
+    description: Understanding power, capital, and leverage
+    targets:
+      - Get licensed as an investment banking agent
+      - Read all Buffett letters / newsletters
+    tracking:
+      - source: reading    # books, articles logged
+      - source: chat       # conversations about licensing, finance
+      - source: web        # research sessions
+    notes: Licensing is the prerequisite for the work.
+
+  physical:
+    description: Capability and financial independence to act freely
+    targets:
+      - BJJ blue belt
+      - $500,000 net worth
+    tracking:
+      - source: exercise   # BJJ sessions, training log
+      - source: financial  # net worth tracking
+      - source: health     # recovery, readiness
+    notes: Net worth is operational capacity, not a vanity metric.
+
+startup:
+  description: >
+    Investment banking for companies that control critical resources —
+    helping them prepare to sell or take on investment.
+  stage: early
+  tracking:
+    - source: email
+    - source: calendar
+    - source: chat
+  notes: >
+    The public instrument. Feeds intellectual and physical quadrants.
+    Builds the relationships and capital required for the long game.

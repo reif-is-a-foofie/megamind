@@ -1,0 +1,44 @@
+{
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": ["mem0", "apple", "gmail"],
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "source ~/megamind/.venv/bin/activate && python3 ~/megamind/main.py prep --quiet 2>/dev/null || true",
+            "async": true
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/megamind/bin/statusline"
+  },
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Navigating",
+      "Plotting course",
+      "Charting",
+      "Reading the water",
+      "Consulting charts",
+      "Scanning the horizon",
+      "Trimming sails",
+      "Taking bearing",
+      "Sounding depth",
+      "Reckoning"
+    ]
+  },
+  "companyAnnouncements": [
+    "We bore the weak thru vantablack of Serpent's needled night.",
+    "Our abacus is quiet-kept, we're absent honor's roll.",
+    "We did indeed these talents turn to free the single flow'r.",
+    "Now we commission galleons whose berth we'll never meet.",
+    "We dive, we drown, we reif as one — we ransom for the Pearl.",
+    "Strike back the dark, alas once more — with frigid, Holy Flame."
+  ]
+}

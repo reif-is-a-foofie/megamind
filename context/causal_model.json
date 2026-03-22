@@ -1,0 +1,49 @@
+{
+  "_description": "Megamind's working hypothesis: which inputs drive which outputs. Updated each session as evidence accumulates. Built by Claude from MCP data \u2014 not manually configured.",
+  "hypotheses": [
+    {
+      "input": "series_63_study_session",
+      "output": "intellectual.licensed",
+      "direction": "positive",
+      "insight": "Player confirmed active study on 2026-03-21 after completing course selection. Single data point \u2014 hypothesis is nascent but directionally sound. Track study consistency vs. practice test scores as evidence accumulates.",
+      "evidence": 4,
+      "confidence": 0.5,
+      "added_at": "2026-03-21T22:50:23.372657"
+    }
+  ],
+  "confirmed_patterns": [],
+  "mire_patterns": [
+    {
+      "_description": "Activities that consume time without moving any metric or uplifting anyone. Megamind watches for these and names them."
+    },
+    {
+      "activity": "test_harness_brief_cycles",
+      "units_spent": 0,
+      "metric_moved": null,
+      "flag": "Multiple test_harness observations logged across physical and social quadrants. These are infrastructure tests, not player activity. No mire concern \u2014 but the observation log will be noisy until real MCP data displaces test entries. Monitor: if test_harness entries persist beyond system setup, they dilute signal.",
+      "first_flagged": "2026-03-21T22:50:23.372657"
+    },
+    {
+      "activity": "background_reasoning_without_new_data",
+      "units_spent": 0,
+      "metric_moved": null,
+      "flag": "Four consecutive background thoughts have now produced structurally identical outputs: same drift alert, same Sunday suppression flags, same spiritual task tree gap, same next_session_note. This pattern itself is a signal: further background thoughts without new player input will yield diminishing returns. The system has reached a stable idle state. The only thing that changes this is the player opening a session.",
+      "first_flagged": "2026-03-22T13:27:50.752621"
+    }
+  ],
+  "mcp_input_map": {
+    "_description": "Which MCPs track which input activities. Megamind builds this as MCPs come online.",
+    "calls_today": "phone_mcp or social_mcp",
+    "scripture_streak_days": "calendar_mcp (blocked morning time)",
+    "meditation_streak_days": "health_mcp (HRV / Apple Health)",
+    "buffett_letters_read": "readwise_mcp or reading_mcp",
+    "licensed": "manual (exam result)",
+    "net_worth_usd": "financial_mcp (Plaid)",
+    "bjj_sessions_this_month": "calendar_mcp or exercise_mcp"
+  },
+  "meta": {
+    "last_updated": "2026-03-22T13:27:50.752621",
+    "session_count": 0,
+    "evidence_threshold": 10
+  }
+}

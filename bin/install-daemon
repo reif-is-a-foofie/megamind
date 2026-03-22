@@ -1,0 +1,114 @@
+#!/bin/zsh
+# Install megamind background daemons (Mac LaunchAgents)
+# - think: hourly causal model updates (brain/think.py)
+# - ingest: daily data pull from all MCPs (main.py ingest)
+# Usage: ~/megamind/bin/install-daemon
+
+MEGAMIND_HOME="${MEGAMIND_HOME:-$HOME/megamind}"
+VENV="$MEGAMIND_HOME/.venv"
+PYTHON="$VENV/bin/python3"
+
+_install_agent() {
+  local label="$1"
+  local plist_path="$HOME/Library/LaunchAgents/${label}.plist"
+  cat > "$plist_path"
+  launchctl unload "$plist_path" 2>/dev/null || true
+  launchctl load "$plist_path"
+  echo "✓  $label"
+}
+
+# ── 1. think — hourly causal model ───────────────────────────────
+_install_agent "com.megamind.think" << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.megamind.think</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>$PYTHON</string>
+    <string>$MEGAMIND_HOME/brain/think.py</string>
+  </array>
+  <key>StartInterval</key><integer>3600</integer>
+  <key>WorkingDirectory</key><string>$MEGAMIND_HOME</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>MEGAMIND_HOME</key><string>$MEGAMIND_HOME</string>
+    <key>PATH</key><string>$HOME/.bun/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>StandardOutPath</key><string>$MEGAMIND_HOME/context/think.log</string>
+  <key>StandardErrorPath</key><string>$MEGAMIND_HOME/context/think.log</string>
+  <key>RunAtLoad</key><true/>
+</dict>
+</plist>
+EOF
+
+# ── 2. ingest — daily MCP data pull (6 AM) ───────────────────────
+_install_agent "com.megamind.ingest" << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.megamind.ingest</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>$PYTHON</string>
+    <string>$MEGAMIND_HOME/main.py</string>
+    <string>ingest</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>6</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+  <key>WorkingDirectory</key><string>$MEGAMIND_HOME</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>MEGAMIND_HOME</key><string>$MEGAMIND_HOME</string>
+    <key>PATH</key><string>$HOME/.bun/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>StandardOutPath</key><string>$MEGAMIND_HOME/context/ingest.log</string>
+  <key>StandardErrorPath</key><string>$MEGAMIND_HOME/context/ingest.log</string>
+  <key>RunAtLoad</key><true/>
+</dict>
+</plist>
+EOF
+
+# ── 3. mcp-sync — check for new MCPs needed ──────────────────────
+_install_agent "com.megamind.mcp-sync" << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.megamind.mcp-sync</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>$PYTHON</string>
+    <string>$MEGAMIND_HOME/brain/mcp_sync.py</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>6</integer>
+    <key>Minute</key><integer>5</integer>
+  </dict>
+  <key>WorkingDirectory</key><string>$MEGAMIND_HOME</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>MEGAMIND_HOME</key><string>$MEGAMIND_HOME</string>
+  </dict>
+  <key>StandardOutPath</key><string>$MEGAMIND_HOME/context/mcp_sync.log</string>
+  <key>StandardErrorPath</key><string>$MEGAMIND_HOME/context/mcp_sync.log</string>
+</dict>
+</plist>
+EOF
+
+echo ""
+echo "⚓  megamind daemons installed"
+echo "   think  — every hour"
+echo "   ingest — daily 6:00 AM"
+echo "   mcp-sync — daily 6:05 AM"
+echo ""
+echo "Logs: $MEGAMIND_HOME/context/{think,ingest,mcp_sync}.log"

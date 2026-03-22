@@ -1,0 +1,45 @@
+#!/bin/zsh
+# Megamind status line — driven by scoring engine
+
+MEGAMIND_HOME="${MEGAMIND_HOME:-$HOME/megamind}"
+VENV="$MEGAMIND_HOME/.venv"
+DATE=$(date "+%a %b %d")
+
+[[ -f "$VENV/bin/activate" ]] && source "$VENV/bin/activate"
+
+# Get scores + calls from scoring engine
+OUTPUT=$(cd "$MEGAMIND_HOME" && python3 -c "
+import sys, json
+sys.path.insert(0, '.')
+try:
+    from brain.score import get_scores, load_character
+    scores = get_scores()
+    char = load_character()
+    calls = char.get('stats', {}).get('social', {}).get('metrics', {}).get('calls_today', 0)
+    print(json.dumps({'scores': scores, 'calls': calls}))
+except Exception as e:
+    print(json.dumps({'scores': {}, 'calls': 0, 'error': str(e)}))
+" 2>/dev/null)
+
+if [[ -z "$OUTPUT" ]]; then
+  echo "⚓  $DATE  ·  loading..."
+  exit 0
+fi
+
+bar() {
+  local score=$1
+  local filled=$(python3 -c "print(round(float('$score') * 5))" 2>/dev/null || echo 0)
+  local out=""
+  for i in $(seq 1 5); do
+    [[ $i -le $filled ]] && out="${out}█" || out="${out}·"
+  done
+  echo "$out"
+}
+
+s=$(echo "$OUTPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['scores'].get('spiritual',0))")
+so=$(echo "$OUTPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['scores'].get('social',0))")
+i=$(echo "$OUTPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['scores'].get('intellectual',0))")
+p=$(echo "$OUTPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['scores'].get('physical',0))")
+calls=$(echo "$OUTPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('calls',0))")
+
+echo "⚓  S $(bar $s)  So $(bar $so)  I $(bar $i)  P $(bar $p)  ·  calls ${calls}/7  ·  ${DATE}"

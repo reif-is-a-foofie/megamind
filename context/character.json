@@ -1,0 +1,71 @@
+{
+  "character": {
+    "name": "reify",
+    "class": "Sailor",
+    "year": 2026
+  },
+  "stats": {
+    "spiritual": {
+      "label": "Spiritual",
+      "score": 0.0,
+      "metrics": {
+        "scripture_streak_days": 0,
+        "meditation_streak_days": 0
+      },
+      "targets": {
+        "scripture_streak_days": 365,
+        "meditation_streak_days": 365
+      }
+    },
+    "social": {
+      "label": "Social",
+      "score": 0.7,
+      "metrics": {
+        "calls_today": 7,
+        "adhna_sister_visits": 0
+      },
+      "targets": {
+        "calls_today": 7,
+        "adhna_sister_visits": 8
+      }
+    },
+    "intellectual": {
+      "label": "Intellectual",
+      "score": 0.0,
+      "metrics": {
+        "licensed": false,
+        "buffett_letters_read": 0
+      },
+      "targets": {
+        "licensed": 1,
+        "buffett_letters_read": 50
+      }
+    },
+    "physical": {
+      "label": "Physical",
+      "score": 0.0,
+      "metrics": {
+        "net_worth_usd": 0,
+        "bjj_belt": "white"
+      },
+      "targets": {
+        "net_worth_usd": 500000,
+        "bjj_belt": "blue"
+      }
+    }
+  },
+  "ventures": {
+    "startup": {
+      "label": "Investment Bank",
+      "metrics": {
+        "stage": "pre-revenue",
+        "active_deals": 0,
+        "pipeline_companies": 0
+      }
+    }
+  },
+  "meta": {
+    "last_updated": "2026-03-21T21:56:31.883261",
+    "session_count": 0
+  }
+}

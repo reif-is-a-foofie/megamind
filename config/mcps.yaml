@@ -1,0 +1,114 @@
+# MEGAMIND — MCP REGISTRY
+# The expectation: every data source will eventually have an MCP.
+# Adding a new source = add one entry here. No code changes.
+#
+# Status: active | planned | future
+# Mode:   pull (Claude queries on demand) | push (data arrives continuously)
+
+memory:
+  mem0:
+    status: active
+    package: mem0ai
+    mode: pull
+    notes: Session memory and recent context. Fast retrieval.
+  qdrant:
+    status: active
+    package: qdrant-client
+    mode: pull
+    notes: Long-term vector store. Pattern clustering. Behavioral signatures over time.
+
+communication:
+  gmail:
+    status: planned
+    mcp_server: mcp-gmail
+    mode: pull
+    quadrants: [social, intellectual, startup]
+  calendar:
+    status: planned
+    mcp_server: mcp-gcal
+    mode: pull
+    quadrants: [spiritual, social, intellectual, physical, startup]
+
+code_and_files:
+  filesystem:
+    status: planned
+    mcp_server: mcp-filesystem
+    mode: pull
+    quadrants: [intellectual, startup]
+  github:
+    status: planned
+    mcp_server: mcp-github
+    mode: pull
+    quadrants: [intellectual, startup]
+
+health_and_body:
+  apple_health:
+    status: future
+    mcp_server: mcp-apple-health
+    mode: push
+    quadrants: [physical, spiritual]
+    notes: Sleep, HRV, activity, readiness
+  whoop:
+    status: future
+    mcp_server: mcp-whoop
+    mode: push
+    quadrants: [physical]
+  bjj_tracker:
+    status: future
+    mcp_server: mcp-bjj
+    mode: push
+    quadrants: [physical]
+    notes: Session logs, technique progress, belt tracking
+
+finance:
+  plaid:
+    status: future
+    mcp_server: mcp-plaid
+    mode: pull
+    quadrants: [physical]
+    notes: Bank accounts, transactions, net worth delta
+  brokerage:
+    status: future
+    mcp_server: mcp-brokerage
+    mode: pull
+    quadrants: [physical]
+
+intelligence:
+  web_history:
+    status: future
+    mcp_server: mcp-browser-history
+    mode: push
+    quadrants: [intellectual]
+    notes: What you're reading and researching
+  readwise:
+    status: future
+    mcp_server: mcp-readwise
+    mode: push
+    quadrants: [intellectual, spiritual]
+    notes: Highlights from books and articles
+  web_search:
+    status: planned
+    mcp_server: mcp-brave-search
+    mode: pull
+    quadrants: [intellectual, startup]
+
+social:
+  call_logs:
+    status: future
+    mcp_server: mcp-phone
+    mode: push
+    quadrants: [social]
+    notes: Who you called, duration, frequency
+  contacts:
+    status: future
+    mcp_server: mcp-contacts
+    mode: pull
+    quadrants: [social, startup]
+
+location:
+  location:
+    status: future
+    mcp_server: mcp-location
+    mode: push
+    quadrants: [physical, social]
+    notes: Movement patterns, where time is spent

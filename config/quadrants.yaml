@@ -1,0 +1,146 @@
+# QUADRANT DEFINITIONS — the game rules
+#
+# This file defines YOUR game. Change it to change what gets tracked and scored.
+# Anyone can fork megamind and redefine their own quadrants here.
+#
+# Each metric needs:
+#   label:    human-readable name
+#   current:  starting value (megamind updates this)
+#   target:   what winning looks like
+#   unit:     what you're measuring
+#   weight:   how much this metric contributes to the quadrant score (must sum to 1.0)
+#   type:     continuous | boolean | enum | currency
+#   reset:    daily | weekly | never  (does this metric reset?)
+#
+# Score formula per quadrant:
+#   score = sum(weight * min(1.0, current / target)) for each metric
+#   Range: 0.0 – 1.0
+
+quadrants:
+
+  spiritual:
+    label: Spiritual
+    color: gold
+    metrics:
+      scripture_streak_days:
+        label: Scripture streak
+        current: 0
+        target: 365
+        unit: days
+        weight: 0.5
+        type: continuous
+        reset: never
+        tracked_by: calendar_mcp   # morning blocked time = done
+      meditation_streak_days:
+        label: Meditation streak
+        current: 0
+        target: 365
+        unit: days
+        weight: 0.5
+        type: continuous
+        reset: never
+        tracked_by: health_mcp     # HRV / Apple Health session
+
+  social:
+    label: Social
+    color: blue
+    metrics:
+      calls_today:
+        label: Calls today
+        current: 0
+        target: 7
+        unit: calls
+        weight: 0.7
+        type: continuous
+        reset: daily
+        tracked_by: phone_mcp      # call log
+      adhna_sister_visits:
+        label: Adhna sister visits
+        current: 0
+        target: 8
+        unit: visits
+        weight: 0.3
+        type: continuous
+        reset: never
+        tracked_by: calendar_mcp   # travel / visit events
+
+  intellectual:
+    label: Intellectual
+    color: green
+    metrics:
+      licensed:
+        label: Investment banking license
+        current: 0
+        target: 1
+        unit: boolean
+        weight: 0.5
+        type: boolean
+        reset: never
+        tracked_by: manual         # exam result — no MCP yet
+      buffett_letters_read:
+        label: Buffett letters read
+        current: 0
+        target: 50
+        unit: letters
+        weight: 0.5
+        type: continuous
+        reset: never
+        tracked_by: readwise_mcp   # reading highlights
+
+  physical:
+    label: Physical
+    color: red
+    metrics:
+      net_worth_usd:
+        label: Net worth
+        current: 0
+        target: 500000
+        unit: usd
+        weight: 0.6
+        type: currency
+        reset: never
+        tracked_by: financial_mcp  # Plaid bank/brokerage
+      bjj_belt:
+        label: BJJ belt
+        current: white
+        target: blue
+        unit: belt
+        weight: 0.4
+        type: enum
+        enum_values: [white, blue, purple, brown, black]
+        enum_scores:  [0.0,  0.5,   0.75,   0.9,    1.0]
+        reset: never
+        tracked_by: manual         # belt promotion — no MCP yet
+
+# UNIT ESTIMATES — how many 7-minute units does one session of each metric take?
+# Used by megamind when generating task trees and daily recommendations.
+unit_estimates:
+  scripture_session:        1    #  7 min
+  meditation_session:       1    #  7 min
+  single_call:              1    #  7 min
+  bjj_session:              8    # 56 min
+  buffett_letter:           2    # 14 min
+  licensing_study_session:  4    # 28 min
+  licensing_practice_test:  2    # 14 min
+
+# Optional: additional tracking domains beyond the four quadrants
+ventures:
+  - key: startup
+    label: Investment Bank
+    metrics:
+      stage:
+        label: Stage
+        current: pre-revenue
+        type: enum
+        enum_values: [idea, pre-revenue, revenue, scaling, exit]
+        enum_scores:  [0.0,  0.1,        0.4,     0.7,     1.0]
+      active_deals:
+        label: Active deals
+        current: 0
+        target: 5
+        type: continuous
+      pipeline_companies:
+        label: Pipeline companies
+        current: 0
+        target: 20
+        type: continuous

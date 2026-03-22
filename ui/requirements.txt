@@ -1,5 +1,0 @@
-rich>=13.0.0
-textual>=0.40.0
-click>=8.0.0
-pyfiglet>=0.8.0
-colorama>=0.4.0
